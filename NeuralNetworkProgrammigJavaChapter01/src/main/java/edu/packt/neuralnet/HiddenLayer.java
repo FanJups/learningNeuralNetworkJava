@@ -1,7 +1,9 @@
 
 package edu.packt.neuralnet;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 import edu.packt.neuralnet.math.IActivationFunction;
 
@@ -66,8 +68,9 @@ public class HiddenLayer extends NeuralLayer {
 		for (int i = 0; i < getListOfNeurons().size(); i++) {
 			int x = i + 1;
 			double[] tab = getListOfNeurons().get(i).getInputs();
-			string = string + "Neuron #" + x + ":" + "\n" + "Input Weights:" + "\n" + Arrays.asList(tab) + "\n"
-					+ "Output Weights:" + "\n" + getOutputs() + "\n";
+			List<Double> list = DoubleStream.of(tab).boxed().collect(Collectors.toList());
+			string = string + "Neuron #" + x + ":" + "\n" + "Input Weights:" + "\n" + list + "\n" + "Output Weights:"
+					+ "\n" + getOutputs() + "\n";
 			;
 		}
 		return string;

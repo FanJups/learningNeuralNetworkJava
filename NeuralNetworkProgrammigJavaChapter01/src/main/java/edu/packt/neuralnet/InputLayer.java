@@ -1,7 +1,9 @@
 package edu.packt.neuralnet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 import edu.packt.neuralnet.math.Linear;
 
@@ -110,7 +112,9 @@ public class InputLayer extends NeuralLayer {
 		for (int i = 0; i < getListOfNeurons().size(); i++) {
 			int x = i + 1;
 			double[] tab = getListOfNeurons().get(i).getInputs();
-			string = string + "Neuron #" + x + ":" + "\n" + "Input Weights:" + "\n" + Arrays.asList(tab) + "\n";
+			List<Double> list = DoubleStream.of(tab).boxed().collect(Collectors.toList());
+
+			string = string + "Neuron #" + x + ":" + "\n" + "Input Weights:" + "\n" + list + "\n";
 		}
 		return string;
 	}

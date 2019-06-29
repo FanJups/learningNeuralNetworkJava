@@ -175,9 +175,24 @@ public class NeuralNet {
 		return _outputs;
 	}
 
-	@Override
-	public String toString() {
+	public void print() {
 
-		return "";
+		System.out.println("### INPUT LAYER ###");
+		System.out.println(inputLayer);
+
+		System.out.println("### HIDDEN LAYER ###");
+
+		for (int i = 0; i < hiddenLayer.size(); i++) {
+
+			System.out.println("Hidden Layer #" + (i + 1));
+
+			System.out.println(hiddenLayer.get(i));
+
+		}
+
+		System.out.println("### OUTPUT LAYER ###");
+		System.out.println(outputLayer);
+
 	}
+
 }
